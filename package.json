@@ -1,0 +1,29 @@
+{
+  "name": "form",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-react": "^6.23.0"
+  },
+  "scripts": {
+    "build": "babel src/ -d lib"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^15.4.2"
+  }
+}
