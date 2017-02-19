@@ -22,7 +22,7 @@ withForm({
 })(MyApp);
 ```
 
-For more comprehensive example, see [example](example/) folder.
+For more comprehensive example, see [example](example/src/SignupForm.js) folder.
 
 ## API
 
