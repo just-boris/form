@@ -5,6 +5,10 @@ export default class Field extends Component {
     this.context.form.setValue(this.props.name, value);
   };
 
+  onInputChange = event => {
+    this.onChange(event.target.value);
+  };
+
   componentDidMount() {
     this.context.form.addField(this);
   }
@@ -22,17 +26,23 @@ export default class Field extends Component {
   }
 
   render() {
-    const props = this.props;
+    const { name } = this.props;
+    const { component, validation, ...props } = this.props;
     const { form } = this.context;
-    const Component = this.props.component;
-    return (
-      <Component
-        {...props}
-        value={form.values[props.name]}
-        error={form.errors[props.name]}
-        onChange={this.onChange}
-      />
-    );
+
+    if (typeof component === "string") {
+      Object.assign(props, {
+        value: form.values[name] || "",
+        onChange: this.onInputChange
+      });
+    } else {
+      Object.assign(props, {
+        value: form.values[name],
+        error: form.errors[name],
+        onChange: this.onChange
+      });
+    }
+    return React.createElement(component, props);
   }
 
   static contextTypes = {
